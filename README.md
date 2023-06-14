@@ -71,10 +71,10 @@ Molecular weight: Calculate the molecular weight of a protein sequence.
 molecular_weight(protein_seq)
 ```
 # Biostrings Additional Example
-## Step 1: Install and Load the Package**
+## Step 1: Install and Load the Package
 Make sure you have the `Biostrings` package installed and loaded in R. If not, refer to Step 1 in the previous tutorial for installation instructions.
 
-## Step 2: Retrieve the BLAST Sequence**
+## Step 2: Retrieve the BLAST Sequence
 To retrieve a BLAST sequence from NCBI, we need to know the accession number or GI number of the sequence. Let's assume we have a GI number, and we want to retrieve the corresponding DNA sequence.
 
 ```
@@ -92,7 +92,7 @@ In the above code, we set the `gi_number` variable to the GI number of the desir
 
 The `getSeq` function retrieves the sequence from NCBI's database in FASTA format and stores it in the `blast_seq` variable.
 
-## Step 3: Perform Sequence Manipulations or Analysis**
+## Step 3: Perform Sequence Manipulations or Analysis
 Once you have the BLAST sequence stored in the `blast_seq` variable, you can perform various manipulations or analyses on it using the functions provided by the `Biostrings` package. For example, you can calculate the length of the sequence:
 
 ```
