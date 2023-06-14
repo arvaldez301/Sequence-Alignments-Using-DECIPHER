@@ -1,3 +1,68 @@
+# Sequence Alignment in BLAST
+## Step 1: Install Required Packages
+To get started, make sure you have the necessary packages installed in RStudio. You'll need the "rentrez" package for accessing the Entrez database and the "dplyr" package for data manipulation. If you don't have these packages installed, you can install them using the following code:
+
+```
+install.packages("rentrez")
+install.packages("dplyr")
+```
+
+## Step 2: Load Required Packages
+Once you have the packages installed, load them into your RStudio session using the following code:
+
+```
+library(rentrez)
+library(dplyr)
+```
+
+## Step 3: Search for Data in Entrez
+To search for data in Entrez, you'll need to specify the database you want to search and the query you want to perform. Here's an example of how to search for articles related to a specific keyword in the PubMed database:
+
+```
+query <- "cancer"  # Specify your query term
+db <- "pubmed"  # Specify the Entrez database
+
+# Search for data
+search_results <- entrez_search(db, term = query)
+```
+
+## Step 4: Retrieve Data from Entrez
+Once you have performed the search, you can retrieve the data using the following code:
+
+```
+# Get the list of IDs from the search results
+id_list <- search_results$ids
+
+# Fetch the data based on the IDs
+data <- entrez_fetch(db, id = id_list, rettype = "xml", parsed = TRUE)
+```
+
+## Step 5: Extract Relevant Information
+The data retrieved from Entrez is typically in XML format. You can extract the relevant information using the functions provided by the "rentrez" and "dplyr" packages. Here's an example of how to extract the title and abstract from the retrieved data:
+
+```
+# Extract title and abstract
+title <- data$PubmedArticle$MedlineCitation$Article$ArticleTitle
+abstract <- data$PubmedArticle$MedlineCitation$Article$Abstract$AbstractText
+
+# Combine the results into a data frame
+results <- data.frame(Title = title, Abstract = abstract)
+```
+
+## Step 6: Analyze and Visualize the Data
+Now that you have the relevant information in a data frame, you can perform any analysis or visualization you require. Here's an example of how to count the number of articles for each year:
+
+```
+# Convert the publication date to year
+results$Year <- substr(results$PubDate, start = 1, stop = 4)
+
+# Count the number of articles per year
+article_counts <- results %>% count(Year)
+
+# Plot the results
+plot(article_counts$Year, article_counts$n, type = "b", xlab = "Year", ylab = "Number of Articles")
+```
+
 # Biostrings Tutorial
 
 ## Step 1: Install and Load the Package
