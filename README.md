@@ -1,7 +1,7 @@
 # Biostrings Tutorial
 
 ## Step 1: Install and Load the Package
-Before using the ```Biostrings``` package, you need to install it from the CRAN repository. Make sure to install the correct genome you are using by using the BiocManager function. To find a list of all of the genomes availbe for use and how to enter them in, visit <<<https://bioconductor.org>>> Open R or RStudio and execute the following commands:
+Before using the ```Biostrings``` package, you need to install it from the CRAN repository. Make sure to install the correct genome you are using by using the BiocManager function. To find a list of all of the genomes availbe for use and how to enter them in, visit <https://bioconductor.org> Open R or RStudio and execute the following commands:
 ```
 install.packages("Biostrings")
 library(Biostrings)
