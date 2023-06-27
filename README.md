@@ -13,9 +13,22 @@ To start, we need to load the DECIPHER package into our R session. Use the follo
 library(DECIPHER)
 ```
 ## Step 2: Reading the DNA Sequences
-In this step, we will read the DNA sequences from a FASTA file. You can either use your own FASTA file or use the provided example file. If you have your own FASTA file, specify the path to the file in the ```fas``` variable. Otherwise, you can use the provided example file from the DECIPHER package:
+In this step, we will read the DNA sequences from a FASTA file. You can either use your own FASTA file or use the provided example file from the DECIPHER package. If you have your own FASTA file, specify the path to the file in the ```fas``` variable. Otherwise, you can use the provided example file from the DECIPHER package:
 ```
-fas <- system.file("extdata", "50S_ribosomal_protein_L2.fas", package = "DECIPHER")
+# Upload your own sequences and enter in the path to your FASTA file
+fas <- "<<path to FASTA file>>"
+```
+If you do not have your own you can use those provided in the package. To view what files are in the package use the following code:
+```
+package_dir <- system.file("extdata", package = "DECIPHER")
+files <- list.files(package_dir)
+print(files)
+
+#Upload an existing file
+fas <- system.file("extdata", "<<<file name>>>", package = "DECIPHER")
+```
+Finally, whatever data file you decide to use whether it is your own or an existing, proceed to the following code:
+```
 dna <- readDNAStringSet(fas)
 ```
 The ```readDNAStringSet()``` function reads the sequences from the FASTA file and stores them in the ```dna``` variable. You can display the unaligned sequences by typing dna in the R console.
