@@ -42,7 +42,7 @@ To align the translation of the DNA sequences into amino acids, use the ```Align
 ```
 AA <- AlignTranslation(dna, type = "AAStringSet")
 ```
-The AlignTranslation() function aligns the DNA sequences and translates them into amino acids. The aligned sequences are stored in the AA variable.
+The AlignTranslation() function aligns the DNA sequences and translates them into amino acids. The aligned sequences are stored in the AA variable. ```type = "AAStringSet"``` indicates that the sequences that are being aligned are amino acids
 ### Method 2: Aligning the Sequences
 To align the DNA sequences without translation, use the AlignSeqs() function:
 ```
@@ -141,3 +141,15 @@ AA <- AlignProfiles(AA1, AA2)
 
 #The AlignProfiles() function aligns the two sets of aligned sequences (AA1 and `AA
 ```
+## Additional Notes
+Other string sets that you are able to use when using the ```AlignTranslation()``` function are:
+
+```"DNAStringSet"```: This type is used to indicate that the sequences being processed are DNA sequences. Functions like AlignSeqs() and SearchDB() accept this type to handle DNA sequence alignment and database searching, respectively.
+
+```"RNAStringSet"```: This type is used for RNA sequences. Similar to DNA sequences, functions like AlignSeqs() and SearchDB() can accept this type when working with RNA sequence alignment or searching in RNA sequence databases.
+
+```"NNStringSet"```: This type is used for nucleotide sequences that can contain both DNA and RNA. Functions like AlignSeqs() and SearchDB() can handle this type to accommodate sequences with mixed DNA and RNA components.
+
+```"MSA"```: This type is used for multiple sequence alignments. It is typically used when working with pre-aligned sequences. Functions like AlignProfiles() accept this type to perform alignment on pre-aligned sets of sequences.
+
+```"AAString"```: This type is used for individual amino acid sequences. It is commonly used when working with single sequences rather than sets of sequences.
