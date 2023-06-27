@@ -1,6 +1,8 @@
 # DECIPHER Tutorial
 In this tutorial, you will learn how to perform sequence alignment using the DECIPHER package in R. Sequence alignment is a fundamental step in bioinformatics and is used to identify similarities and differences between biological sequences, such as DNA or protein sequences. DECIPHER is a powerful R package that provides functions for sequence alignment and analysis.
 
+Additional Resource: <https://bioconductor.github.io/BiocWorkshops/working-with-genomic-data-in-r-with-the-decipher-package.html>
+
 ## Step 1: Install and Load the Required Libraries
 Before you begin, make sure you have R and the DECIPHER package installed. You can install the DECIPHER package using the following code:
 ```
@@ -139,5 +141,3 @@ AA <- AlignProfiles(AA1, AA2)
 
 #The AlignProfiles() function aligns the two sets of aligned sequences (AA1 and `AA
 ```
-
-
