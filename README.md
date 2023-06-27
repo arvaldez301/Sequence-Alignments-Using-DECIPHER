@@ -48,6 +48,11 @@ DNA <- AlignSeqs(dna)
 ```
 The AlignSeqs() function directly aligns the DNA sequences without translating them. The aligned sequences are stored in the DNA variable.
 
+### Method 3: Aligning the Translation and then the Reverse Translation
+```
+DNA <- AlignTranslation(dna)
+```
+
 ## Step 4: Visualizing the Alignment
 DECIPHER provides a function called BrowseSeqs() that allows you to visualize the alignment. You can highlight specific sequences or regions of interest. To browse the alignment, use the following code:
 ```
@@ -58,3 +63,81 @@ If there are frameshifts or errors in the alignment, you can correct them using 
 
 ## Step 6: Saving the Aligned Sequences
 To save the aligned sequences to a new FASTA file, you can use the ```writeXStringSet()``` function. Specify the aligned sequences and the output file path:
+```
+writeXStringSet(DNA, file = "<<path to output file>>")
+```
+
+## For Non-Coding RNA Sequences
+In these step, we will work with non-coding RNA sequences. Specifically, we will use a database containing 16S ribosomal RNA sequences and align them.
+
+### Step 1: Loading the Files
+Set the path to the database file containing the 16S ribosomal RNA sequences:
+```
+db <- system.file("extdata", "Bacteria_175seqs.sqlite", package = "DECIPHER")
+```
+Use the SearchDB() function to retrieve the non-coding RNA sequences from the database:
+```
+rna <- SearchDB(db, remove = "all", type = "RNAStringSet")
+```
+The ```SearchDB()``` function retrieves the RNA sequences from the specified database file and stores them in the ```rna``` variable.
+
+Alternatively, if you have DNA sequences and want to convert them to RNA, use the ```RNAStringSet()``` function:
+```
+rna <- RNAStringSet(dna)
+```
+This function converts the DNA sequences in the ```dna``` variable to RNA sequences. 
+
+Alternatively, if you have RNA sequences in a FASTA file, you can import them directly using the ```readRNAStringSet()``` function:
+```
+rna <- readRNAStringSet("<<path to FASTA file>>")
+#Replace ```<<path to FASTA file>>``` with the actual path to your FASTA file.
+```
+### Step 2: Aligning Non-Coding RNA Sequences
+Next, we will align the non-coding RNA sequences. DECIPHER provides the ```AlignSeqs()``` function, which can align RNA sequences and take into account RNA secondary structure.
+
+Align the RNA sequences using the ```AlignSeqs()``` function:
+```
+alignedRNA <- AlignSeqs(rna)
+```
+The AlignSeqs() function aligns the RNA sequences, considering RNA secondary structure, and stores the aligned sequences in the ```alignedRNA``` variable.
+### Step 3: Aligning Two Aligned Sequence Sets
+In this step, we will align two sets of already aligned sequences.
+
+Determine the index of the halfway point of the DNA sequences:
+```
+half <- floor(length(dna) / 2)
+
+#The half variable store the index of the halfway point
+```
+Set the first half of your DNA sequences
+```
+dna1 <- dna[1:half]
+
+#The dna1 variable contains the first half of the DNA sequences, from index 1 to half.
+```
+Set the second half of your DNA sequences:
+```
+dna2 <- dna[(half + 1):length(dna)]
+
+#The dna2 variable contains the second half of the DNA sequences, from index half + 1 to the end of the sequences.
+```
+Align the translation of the first half of DNA sequences:
+```
+AA1 <- AlignTranslation(dna1, type = "AAStringSet")
+
+#The AlignTranslation() function aligns the translation of the DNA sequences and stores the aligned sequences in the AA1 variable.
+```
+Align the translation of the second half of DNA sequences:
+```
+AA2 <- AlignTranslation(dna2, type = "AAStringSet")
+
+#The AlignTranslation() function aligns the translation of the DNA sequences and stores the aligned sequences in the AA2 variable.
+```
+Align the two alignments using the AlignProfiles() function:
+```
+AA <- AlignProfiles(AA1, AA2)
+
+#The AlignProfiles() function aligns the two sets of aligned sequences (AA1 and `AA
+```
+
+
