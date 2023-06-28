@@ -50,6 +50,10 @@ DNA <- AlignSeqs(dna)
 ```
 The AlignSeqs() function directly aligns the DNA sequences without translating them. The aligned sequences are stored in the DNA variable.
 
+#If an error appears regarding Gap Characters preform the follwing command before the alignments:
+```
+dna <-RemoveGaps(dna)
+```
 ### Method 3: Aligning the Translation and then the Reverse Translation
 ```
 DNA <- AlignTranslation(dna)
