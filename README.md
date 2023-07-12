@@ -68,7 +68,7 @@ BrowseSeqs(AA, highlight = 1)
 If there are frameshifts or errors in the alignment, you can correct them using the ```CorrectFrameshifts()``` function. First, apply the function to the nucleotide sequences, and then re-align them using either ```AlignTranslation()``` or ```AlignSeqs()```.
 
 ## Step 6: Saving the Aligned Sequences
-To save the aligned sequences to a new FASTA file, you can use the ```writeXStringSet()``` function. Specify the aligned sequences and the output file path:
+To save the aligned sequences to a new FASTA file, you can use the ```writeXStringSet()``` function. Specify the aligned sequences and the output file path and the name of your new file:
 ```
 writeXStringSet(DNA, file = "<<path to output file>>")
 ```
