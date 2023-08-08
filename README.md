@@ -72,7 +72,7 @@ To save the aligned sequences to a new FASTA file, you can use the ```writeXStri
 ```
 writeXStringSet(DNA, file = "<<path to output file>>")
 ```
-
+Make sure prior to using the ```writeXStringSet``` function you convert your new aligned data set back to a String Set using either ```DNAStringSet()```, ```RNAStringSet()```, of ```AAStringSet()``` depending on what your aligned data was.
 ## For Non-Coding RNA Sequences
 In these step, we will work with non-coding RNA sequences. Specifically, we will use a database containing 16S ribosomal RNA sequences and align them.
 
